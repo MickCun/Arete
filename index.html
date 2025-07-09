@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Font Imports -->
+        <!-- Cinzel, Montserrat -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+        <link href="style.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <section class="core-functionality">
+            <div id="clouds-background" style="width: 100vw; height: 100vh; position: fixed; z-index: -1;">
+                <div class="app-container">
+                    <h1>Arete</h1>
+                    <a class="btn btn-dark gen-mot-q" href="google.com">Generate Motivational Quote</a>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>Developed by <a href="https://www.linkedin.com/in/michael-e-c-ba5584167/">Michael E Cunningham</a></p>
+        </footer>
+
+        <!-- Load Three.js and Vanta.js Clouds -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+
+        <script>
+            VANTA.CLOUDS({
+            el: "#clouds-background",
+            mouseControls: false,
+            touchControls: false,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            speed: 0.6,
+            backgroundColor: 0x000000,      // Pure black
+            skyColor: 0x000000,             // Pure black sky
+            cloudColor: 0x1a1a2e,           // Dark navy cloud
+            cloudShadowColor: 0x000000,     // Full black shadows
+            sunColor: 0x000000,             // Kill the light
+            sunGlareColor: 0x000000,        // Kill the glare
+            sunlightColor: 0x000000         // Kill any ambient light
+            })
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+    </body> 
+</html>
