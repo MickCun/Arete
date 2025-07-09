@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+html, body {
+    overflow-y: hidden;
+    height: 100%;
+}
+
 app-container, h1 {
     font-size: 200px;
     color: white;
@@ -10,7 +15,7 @@ app-container, h1 {
 }
 
 .app-container {
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,10 +31,11 @@ app-container, h1 {
 
 footer {
     color: rgb(72, 72, 72);
-    display: flex;
-    justify-content: center;    
-    align-items: flex-end;       
-    height: 100vh;               
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
 }
 
 a {
