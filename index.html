@@ -13,13 +13,93 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 
         <link href="style.css" type="text/css" rel="stylesheet">
+
+        <script>
+            const quotes = [
+                "You will never always be motivated, so you must learn to be disciplined.",
+                "Hard choices, easy life. Easy choices, hard life.",
+                "If you’re not willing to risk the unusual, you’ll have to settle for the ordinary.",
+                "It is not death that a man should fear, but never beginning to live.",
+                "Discipline is choosing between what you want now and what you want most.",
+                "The only way out is through.",
+                "You either suffer the pain of discipline or the pain of regret.",
+                "Comfort is a slow death. Prefer pain.",
+                "Nobody cares, work harder.",
+                "The man who moves a mountain begins by carrying away small stones.",
+                "Become the person you needed when you were younger.",
+                "Every man has two lives. The second begins when he realizes he has only one.",
+                "When you’re going through hell, keep going.",
+                "We do not rise to the level of our goals, we fall to the level of our systems.",
+                "What you do in the dark puts you in the light.",
+                "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+                "If you want to be happy, first be useful.",
+                "The cost of being wrong is less than the cost of doing nothing.",
+                "Live as if you were already the person you’re trying to become.",
+                "One day, you’ll wake up and there won’t be any more time to do the things you’ve always wanted. Do it now.",
+                "You were put on this earth to do more than just pay bills and die.",
+                "Don’t ask what the world needs. Ask what makes you come alive, and go do it.",
+                "The biggest risk is not taking one.",
+                "You get to choose: evolve or repeat.",
+                "Man is not made for defeat. A man can be destroyed but not defeated.",
+                "Most people die at 25 and aren’t buried until 75.",
+                "Live as if you’ll die tomorrow. Learn as if you’ll live forever.",
+                "The cave you fear to enter holds the treasure you seek.",
+                "Everything you’ve ever wanted is sitting on the other side of fear.",
+                "Be who you needed when you were broken.",
+                "You don’t find your purpose — you build it.",
+                "Die with memories, not dreams.",
+                "You cannot swim for new horizons until you have courage to lose sight of the shore.",
+                "Act as if what you do makes a difference. It does.",
+                "A year from now you’ll wish you started today.",
+                "No one is you, and that is your power.",
+                "The purpose of life is not to be happy. It’s to be useful, honorable, and compassionate.",
+                "Build a life you don’t need a vacation from.",
+                "If your dreams don’t scare you, they’re too small.",
+                "Someday is not a day of the week.",
+                "Your time is limited, so don’t waste it living someone else’s life.",
+                "At some point, you just have to be bold enough to bet on yourself.",
+                "The goal is not to live forever, but to create something that will.",
+                "Don't cling to a mistake just because you spent a lot of time making it.",
+                "You owe it to yourself to become everything you’ve ever dreamed of.",
+                "If you don’t build your dream, someone will hire you to help build theirs.",
+                "A ship in harbor is safe — but that’s not what ships are built for.",
+                "You cannot become what you want by remaining what you are.",
+                "Be so good they can’t ignore you.",
+                "Live like you’re writing a story someone else would want to read.",
+                "Be the kind of person your future self won’t stop thanking you for.",
+                "You don't get what you wish for. You get what you work for.",
+                "Stop waiting. The time will never be ‘just right.’",
+                "You’re not behind in life. There’s no schedule. There’s only now.",
+                "Sometimes the bravest thing you can do is show up one more day.",
+                "Every next level of your life will demand a different you.",
+                "Do not go where the path may lead, go instead where there is no path and leave a trail.",
+                "You weren’t born to blend in — you were born to stand out.",
+                "You’re not tired. You’re uninspired.",
+                "Make your life a mission — not an intermission.",
+                "One day, your name will be spoken for the last time. Make it mean something before then.",
+                "You were not born to live small. That voice telling you to shrink is not your own.",
+                "Your life is the answer to a question only you were born to ask.",
+                "The version of you that’s afraid? That’s not the one who gets to decide.",
+                "The longer you wait to become the person you’re meant to be, the louder the regret will echo.",
+                "Some people spend their whole lives running from the fire. You? You were built to walk through it.",
+                "Every excuse you’ve ever made is standing between you and the life that was always yours.",
+                "There is no 'right time' — only time you either use or lose.",
+                "Don’t just chase a dream. Corner it.",
+                "You weren’t meant to be understood by everyone. You were meant to be legendary to the few who get it.",
+                "All our dreams can come true, if we have the courage to pursue them.",
+                "It is not the critic who counts; not the man who points out how the strong man stumbles, or where the doer of deeds could have done them better. The credit belongs to the man who is actually in the arena, whose face is marred by dust and sweat and blood; who strives valiantly; who errs, who comes short again and again, because there is no effort without error and shortcoming; but who does actually strive to do the deeds; who knows great enthusiasms, the great devotions; who spends himself in a worthy cause; who at the best knows in the end the triumph of high achievement, and who at the worst, if he fails, at least fails while daring greatly..."
+            ];
+        </script>
     </head>
     <body>
         <section class="core-functionality">
             <div id="clouds-background" style="width: 100vw; height: 100vh; position: fixed; z-index: -1;"></div>
-            <div class="app-container">
+            <div class="app-container" id="application-container">
                 <h1>Arete</h1>
-                <a class="btn btn-dark gen-mot-q" href="google.com">Generate Motivational Quote</a>
+                <a class="btn btn-dark gen-mot-q" id="generate">Generate Daily Motivational Quote</a>
+                <div class="motivational-quote" id="quote">
+                    <p></p>
+                </div>
             </div>
         </section>
         <footer>
@@ -48,6 +128,29 @@
             sunGlareColor: 0x000000,        // Kill the glare
             sunlightColor: 0x000000         // Kill any ambient light
             })
+        </script>
+
+        <script>
+            document.getElementById("generate").addEventListener("click", function() {
+                const appContainer = document.getElementById("application-container");
+                appContainer.classList.add("shift-up");
+
+                // Hide the button
+                document.getElementById("generate").style.display = "none";
+
+                // Get random quote
+                const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+                // Show the quote
+                const quoteBlock = document.getElementById("quote");
+                quoteBlock.querySelector("p").textContent = randomQuote;
+                quoteBlock.style.display = "block";
+
+                // Scroll into view if needed
+                quoteBlock.scrollIntoView({ behavior: "smooth" });
+
+                console.log("Quote displayed:", randomQuote);
+            });
         </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>

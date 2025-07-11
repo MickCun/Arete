@@ -4,7 +4,8 @@
 }
 
 html, body {
-    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     height: 100%;
 }
 
@@ -40,4 +41,28 @@ footer {
 
 a {
     text-decoration: none;
+}
+
+#application-container {
+    transition: transform 0.8s ease;
+}
+
+.shift-up {
+    transform: translateY(-240px);
+}
+
+.motivational-quote {
+    width: 600px;
+    height: auto;
+    background-color: black;
+    color: white;
+    z-index: 10;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 40px;
+    display: none;
 }
